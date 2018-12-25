@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"
+        android:orientation="vertical"
+        tools:context=".activity.LoginActivity">
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/drops" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:text="@string/aquahey"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:textSize="30sp" />
+
+
+        <EditText
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:background="@drawable/textbox"
+            android:ems="10"
+            android:maxLength="10"
+            android:hint="@string/enter_your_register_mobile_number"
+            android:inputType="number"
+            android:textAlignment="center" />
+
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="270dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:background="@drawable/btnsignup"
+            android:text="@string/submit"
+            android:textColor="#ffff" />
+
+    </LinearLayout>
+
+</layout>
+

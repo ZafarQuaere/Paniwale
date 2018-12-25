@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">AquaHey</string>
+
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile No.</string>
+    <string name="username">User Name</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <array name="order_type">
+
+        <item>Immediately</item>
+        <item>Regularly</item>
+
+    </array>
+
+    <array name="states">
+        <item>Maharashtra</item>
+    </array>
+    <array name="districts">
+        <item>Mumbai</item>
+        <item>New Mumbai</item>
+        <item>Thane</item>
+
+    </array>
+    <array name="city">
+        <item>Mumbra</item>
+        <item>Diva</item>
+        <item>Kalwa</item>
+        <item>Naupada</item>
+        <item>Shilphata</item>
+        <item>Badlapur</item>
+        <item>Ghodbandar</item>
+        <item>Shree Nagar</item>
+        <item>Anu Nagar</item>
+        <item>Majiwada</item>
+        <item>Lal Bahadur Shastri Road</item>
+        <item>Ghodbunder Road</item>
+        <item>Kasarvadavali</item>
+        <item>Kolshet Road</item>
+        <item>Panch Pakhadi</item>
+        <item>Pokhran Road No. 1</item>
+        <item>Vartak Nagar</item>
+        <item>Eastern Express Highway</item>
+
+    </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_aqua">Nearby Aqua</string>
+    <string name="rs">rs</string>
+    <string name="mrp">MRP:</string>
+    <string name="dealer">Dealer:</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="spinner_hint">Districts</string>
+    <string name="enter_your_register_mobile_number">Enter Your Register Mobile Number</string>
+    <string name="submit">Submit</string>
+    <string name="aquahey">AquaHey!</string>
+</resources>

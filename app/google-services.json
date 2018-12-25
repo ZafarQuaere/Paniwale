@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "762141068224",
+    "firebase_url": "https://paniwale-30f58.firebaseio.com",
+    "project_id": "paniwale-30f58",
+    "storage_bucket": "paniwale-30f58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762141068224:android:a7b485836ee60fd7",
+        "android_client_info": {
+          "package_name": "com.app.aquahey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762141068224-6r9gflrggg7360tfrbtv5nhejc6e1kd7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.aquahey",
+            "certificate_hash": "a9aa4f8477a9a0a70643dc3a576b9d8b6fdd5041"
+          }
+        },
+        {
+          "client_id": "762141068224-nlot2c9vpvoks961hs54q72kha11ikrs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADcsgdK-KIgu26L0mbxCvAwnBt2iOtcXw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762141068224-nlot2c9vpvoks961hs54q72kha11ikrs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

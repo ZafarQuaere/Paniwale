@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.BrandFragment">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.app.aquahey.purepani.viewmodel.AquaDataViewModel" />
+    </data>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/aqua_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        app:adapter="@{dataModel.adapter}"
+        app:data="@{dataModel.data}" />
+
+
+    <!--<data>
+
+        <variable
+            name="dataModel"
+            type="com.nussd.emptodo.viewModel.DataViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/demoViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:pagerAdapter="@{pagerAdapter}" />
+    </FrameLayout>-->
+</layout>
