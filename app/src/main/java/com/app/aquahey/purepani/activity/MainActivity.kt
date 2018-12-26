@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.profile -> return true
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -135,7 +135,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val latitude = mylocation!!.latitude
             val longitude = mylocation!!.longitude
             addresses = geocoder!!.getFromLocation(latitude, longitude, 1)
-            LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, addresses!![0].postalCode)
+          //  LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, addresses!![0].postalCode)
+            LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, "421302")
 
 
         }
