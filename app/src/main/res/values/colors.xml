@@ -10,5 +10,11 @@
     <color name="grey_dark">#f8818080</color>
     <color name="bg">#bcdad7</color>
 
+    <color name="call_color">#395cf5</color>
+
+    <color name="black">#222223</color>
+
+
+
 
 </resources>

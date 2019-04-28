@@ -21,16 +21,20 @@ public class PermissionUtils {
         int permissionCamera = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
 */
         int permissionFineLocation = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
-       // int permissionCourseLocation = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+        int permissionCallPhone = ContextCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE);
+
+        // int permissionCourseLocation = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
         /*
         int permissionCamera = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
         int permissionReadExternalStorage = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
         int permissionWriteExternalStorage = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int permissionCallPhone = ContextCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE);
       */
         List<String> listPermissionsNeeded = new ArrayList<>();
         if (permissionFineLocation != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (permissionCallPhone != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CALL_PHONE);
         }
        /* if (permissionCourseLocation != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.SYSTEM_ALERT_WINDOW);

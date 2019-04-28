@@ -18,6 +18,8 @@ public class Product implements Parcelable {
     public String longitude;
     public String rating;
     public String addressOne;
+    public String dealerContact;
+
 
 
     public Product() {
@@ -40,6 +42,7 @@ public class Product implements Parcelable {
         dest.writeString(this.longitude);
         dest.writeString(this.rating);
         dest.writeString(this.addressOne);
+        dest.writeString(this.dealerContact);
     }
 
     protected Product(Parcel in) {
@@ -53,6 +56,7 @@ public class Product implements Parcelable {
         this.longitude = in.readString();
         this.rating = in.readString();
         this.addressOne = in.readString();
+        this.dealerContact = in.readString();
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {

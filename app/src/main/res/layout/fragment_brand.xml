@@ -23,7 +23,7 @@
     <!--<data>
 
         <variable
-            name="dataModel"
+            dealerContact="dataModel"
             type="com.nussd.emptodo.viewModel.DataViewModel" />
     </data>
 

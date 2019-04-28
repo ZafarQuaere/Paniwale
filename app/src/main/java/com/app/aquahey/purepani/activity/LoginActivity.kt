@@ -51,7 +51,7 @@ class LoginActivity : BaseActivity() {
     private fun validationLoginError(): Boolean {
         return when {
             ErrorUtils.emptyCheck(user_name) -> true
-            //  ErrorUtils.lengthCheck(mobile, 10) -> true
+            //  ErrorUtils.lengthCheck(dealerContact, 10) -> true
             pass.text.toString().isEmpty() -> true
             else -> false
         }
@@ -67,13 +67,13 @@ class LoginActivity : BaseActivity() {
                 if (response.isSuccessful) {
                     val networkResponse = response.body()
                     if (null != networkResponse) {
-                        if (networkResponse.success == 1) {
+                        if (networkResponse.status == 1) {
                             LocalConfiq.putString(applicationContext, LocalConfiq.USER_ID,
-                                    networkResponse.resultArray.id)
+                                    networkResponse.data.id)
                             LocalConfiq.putString(applicationContext, LocalConfiq.USER_NAME,
-                                    networkResponse.resultArray.name)
+                                    networkResponse.data.name)
                             LocalConfiq.putString(applicationContext, LocalConfiq.MOBILE,
-                                    networkResponse.resultArray.mobile)
+                                    networkResponse.data.mobile)
                             LocalConfiq.putBoolean(applicationContext, LocalConfiq.IS_LOGIN, true)
                             hideDialog()
                             val intent = Intent(applicationContext, MainActivity::class.java)
@@ -100,7 +100,7 @@ class LoginActivity : BaseActivity() {
 
     private fun loginData() {
         val login = Login()
-        login.name = user_name.text.toString()
+        login.mobile = user_name.text.toString()
         login.password = pass.text.toString()
         login.userType = "1"
         login(login)

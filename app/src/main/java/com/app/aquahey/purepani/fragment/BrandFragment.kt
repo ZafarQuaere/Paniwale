@@ -21,12 +21,12 @@ import com.nussd.emptodo.viewModel.DataViewModel
 class BrandFragment : BaseFragment(), DataViewModel.OnLoadTaskCallback {
 
     private var dataViewModel: DataViewModel? = null
-
+    lateinit var binding: FragmentBrandBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentBrandBinding>(inflater, R.layout.fragment_brand, container, false)
+        binding = DataBindingUtil.inflate<FragmentBrandBinding>(inflater, R.layout.fragment_brand, container, false)
         openDialog()
         dataViewModel = DataViewModel(activity)
         // dataViewModel.setData(this);
@@ -36,7 +36,6 @@ class BrandFragment : BaseFragment(), DataViewModel.OnLoadTaskCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView(view)
         dataViewModel!!.setData(this)
     }
 
@@ -49,6 +48,7 @@ class BrandFragment : BaseFragment(), DataViewModel.OnLoadTaskCallback {
     }
 
     override fun onSuccess() {
+        initRecyclerView(binding.root)
         hideDialog()
     }
 

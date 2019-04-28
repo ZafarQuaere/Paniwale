@@ -1,14 +1,14 @@
 package com.app.aquahey.purepani.fragment
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.app.aquahey.purepani.R
-import com.app.aquahey.purepani.activity.MyOrderActivity
+import com.app.aquahey.purepani.utils.ErrorUtils
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -35,13 +35,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when {
-            v!!.id == R.id.brand_list -> openFragmentBrand()
-            v.id == R.id.nearby -> openFragmentAquaList(1)
-            v.id == R.id.tanker -> openFragmentAquaList(2)
+            v!!.id == R.id.brand_list -> if (ErrorUtils.isOnline(context)) openFragmentBrand()
+            v.id == R.id.nearby -> if (ErrorUtils.isOnline(context)) openFragmentAquaList(1)
+            v.id == R.id.tanker -> if (ErrorUtils.isOnline(context)) openFragmentAquaList(2)
             v.id == R.id.my_aqua -> {
-                val intent = Intent(context, MyOrderActivity::class.java)
-                intent.putExtra("IsMyOrder",true)
-                startActivity(intent)
+                Toast.makeText(context, "coming soon", Toast.LENGTH_LONG).show()
             }
         }
     }

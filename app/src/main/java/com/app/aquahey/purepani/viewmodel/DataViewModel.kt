@@ -1,12 +1,9 @@
 package com.nussd.emptodo.viewModel
 
-import android.app.Activity
-import android.content.Context
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.support.v4.app.FragmentActivity
 import com.app.aquahey.purepani.BR
-import com.app.aquahey.purepani.adapter.CustomPagerAdapter
 import com.app.aquahey.purepani.adapter.DataAdapter
 import com.app.aquahey.purepani.model.BrandData
 import com.nussd.todo.network.RetrofitBase
@@ -37,8 +34,8 @@ class DataViewModel(val context: FragmentActivity?) : BaseObservable() {
             override fun onResponse(call: Call<BrandData>, response: Response<BrandData>) {
                 if (response.isSuccessful) {
                     val dataResponse = response.body()
-                    if (dataResponse?.resultArray != null) {
-                        data = dataResponse.resultArray
+                    if (dataResponse?.data != null && dataResponse.status == 1) {
+                        data = dataResponse.data
                         notifyPropertyChanged(BR.data)
                         onLoadTaskCallback.onSuccess()
                     } else {

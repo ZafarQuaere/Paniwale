@@ -15,7 +15,7 @@ class LocalConfiq {
         var IS_LOGIN = "isLogin"
         var USER_ID = "userId"
         var USER_NAME = "userName"
-        var MOBILE = "mobile"
+        var MOBILE = "dealerContact"
         var OTP = "otp"
         var PINCODE = "pincode"
 

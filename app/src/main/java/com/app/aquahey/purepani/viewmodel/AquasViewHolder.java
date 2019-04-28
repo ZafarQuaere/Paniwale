@@ -30,4 +30,6 @@ public class AquasViewHolder extends BaseObservable {
         ImageLoader.getInstance().displayImage(imageUrl, view, ImageUtil.getOption());
 
     }
+
+
 }

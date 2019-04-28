@@ -1,7 +1,7 @@
 package com.app.aquahey.purepani.view;
 
 public interface OnDataLoadCallBack {
-    public void onSuccess();
+    void onSuccess();
 
-    public void onFailed(final String error);
+    void onFailed(final String error);
 }

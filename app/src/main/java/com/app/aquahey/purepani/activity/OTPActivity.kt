@@ -10,7 +10,7 @@ import com.app.aquahey.purepani.databinding.ActivityOtpBinding
 import com.app.aquahey.purepani.model.SignIn
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.view.OnDataLoadCallBack
-import com.app.aquahey.purepani.viewmodel.OTPViewModel
+import com.app.aquahey.purepani.viewmodel.CommanViewModel
 import com.app.aquahey.purepani.viewmodel.SignupViewModel
 
 class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
@@ -19,7 +19,7 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
     private lateinit var signupViewModel: SignupViewModel
     var signIn: SignIn? = null
 
-    private lateinit var otpViewModel: OTPViewModel
+    private lateinit var commanViewModel: CommanViewModel
     private lateinit var otp: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +29,13 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
         val mobile = intent.getStringExtra("Mobile")
         dataBind.submit.setOnClickListener(this)
         dataBind.cancel.setOnClickListener(this)
-        otpViewModel = OTPViewModel()
+        commanViewModel = CommanViewModel()
         openDialog()
         if (null != signIn) {
-            otpViewModel.otpService(applicationContext, this, signIn!!.mobile)
+            commanViewModel.otpService(applicationContext, this, signIn!!.mobile)
 
         } else {
-            otpViewModel.otpService(applicationContext, this, mobile)
+            commanViewModel.otpService(applicationContext, this, mobile)
         }
 
     }
@@ -62,6 +62,7 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
                     } else {
                         val intent = Intent(applicationContext, ForgetPasswordActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                 } else {
                     Toast.makeText(applicationContext, "OTP Not Match", Toast.LENGTH_LONG).show()
@@ -78,9 +79,12 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
     fun signup() {
         val loadCallBack = object : OnDataLoadCallBack {
             override fun onSuccess() {
-                val intent = Intent(applicationContext, MainActivity::class.java)
+                /*val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
-                finish()
+                finish()*/
+                LocalConfiq.putBoolean(applicationContext, LocalConfiq.IS_LOGIN, true)
+                hideDialog()
+                onBackPressed()
                 hideDialog()
             }
 

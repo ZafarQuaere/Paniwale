@@ -7,8 +7,8 @@ import java.util.List;
 
 public class BrandData implements Parcelable {
 
-    public int success;
-    public List<Brand> resultArray;
+    public int status;
+    public List<Brand> data;
 
 
 
@@ -20,6 +20,8 @@ public class BrandData implements Parcelable {
 
         @Override
         public int describeContents() {
+
+
             return 0;
         }
 
@@ -59,16 +61,16 @@ public class BrandData implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.success);
-        dest.writeTypedList(this.resultArray);
+        dest.writeInt(this.status);
+        dest.writeTypedList(this.data);
     }
 
     public BrandData() {
     }
 
     protected BrandData(Parcel in) {
-        this.success = in.readInt();
-        this.resultArray = in.createTypedArrayList(Brand.CREATOR);
+        this.status = in.readInt();
+        this.data = in.createTypedArrayList(Brand.CREATOR);
     }
 
     public static final Parcelable.Creator<BrandData> CREATOR = new Parcelable.Creator<BrandData>() {
