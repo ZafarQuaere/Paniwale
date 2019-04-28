@@ -17,7 +17,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.app.aquahey.purepani.R
-import com.app.aquahey.purepani.fragment.AquaListFragment
 import com.app.aquahey.purepani.fragment.HomeFragment
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.utils.PermissionUtils
@@ -159,7 +158,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val latitude = mylocation!!.latitude
             val longitude = mylocation!!.longitude
             addresses = geocoder!!.getFromLocation(latitude, longitude, 1)
-            LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, "401208")
+            LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, addresses!![0].postalCode)
 
 
         }
