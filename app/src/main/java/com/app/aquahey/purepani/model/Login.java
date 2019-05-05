@@ -9,7 +9,7 @@ import android.os.Parcelable;
 
 public class Login implements Parcelable {
 
-    public String name;
+    public String mobile;
     public String password;
     public String userType;
 
@@ -21,7 +21,7 @@ public class Login implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.name);
+        dest.writeString(this.mobile);
         dest.writeString(this.password);
         dest.writeString(this.userType);
     }
@@ -30,7 +30,7 @@ public class Login implements Parcelable {
     }
 
     protected Login(Parcel in) {
-        this.name = in.readString();
+        this.mobile = in.readString();
         this.password = in.readString();
         this.userType = in.readString();
     }

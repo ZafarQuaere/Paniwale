@@ -30,13 +30,13 @@ class SignupViewModel(private val signIn: SignIn?, private val onSignUpCallback:
                 if (response.isSuccessful) {
                     val networkResponse = response.body()
                     if (null != networkResponse) {
-                        if (networkResponse.success == 1) {
-                            LocalConfiq.putString(context, LocalConfiq.USER_ID,
-                                    networkResponse.resultArray.id)
-                            LocalConfiq.putString(context, LocalConfiq.USER_NAME,
-                                    networkResponse.resultArray.name)
-                            LocalConfiq.putString(context, LocalConfiq.MOBILE,
-                                    networkResponse.resultArray.mobile)
+                        if (networkResponse.status == 1) {
+                            /* LocalConfiq.putString(context, LocalConfiq.USER_ID,
+                                     networkResponse.data.id)
+                             LocalConfiq.putString(context, LocalConfiq.USER_NAME,
+                                     networkResponse.data.name)
+                     */        LocalConfiq.putString(context, LocalConfiq.MOBILE,
+                                    networkResponse.data.mobile)
                             LocalConfiq.putBoolean(context, LocalConfiq.IS_LOGIN, true)
                             onSignUpCallback.onSuccess()
                         } else {

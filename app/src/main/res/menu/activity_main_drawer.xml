@@ -11,9 +11,11 @@
         <item
             android:id="@+id/my_order"
             android:icon="@drawable/ic_menu_gallery"
+            android:visible="false"
             android:title="Myorder" />
         <item
             android:id="@+id/logout"
+            android:visible="false"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Logout" />
 

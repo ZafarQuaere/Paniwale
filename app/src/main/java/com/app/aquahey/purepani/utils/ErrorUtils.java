@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Ikram on 11/8/2017.
@@ -42,6 +43,7 @@ public class ErrorUtils {
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
         } else {
+            Toast.makeText(context, "Please Check your Interner Connection", Toast.LENGTH_LONG).show();
             return false;
         }
     }

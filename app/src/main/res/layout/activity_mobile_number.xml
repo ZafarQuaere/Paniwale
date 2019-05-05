@@ -38,9 +38,10 @@
             android:layout_margin="8dp"
             android:background="@drawable/textbox"
             android:ems="10"
-            android:maxLength="10"
             android:hint="@string/enter_your_register_mobile_number"
             android:inputType="number"
+            android:maxLength="10"
+            android:padding="8dp"
             android:textAlignment="center" />
 
 
@@ -53,6 +54,44 @@
             android:background="@drawable/btnsignup"
             android:text="@string/submit"
             android:textColor="#ffff" />
+
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="270dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:background="@drawable/btnsignup"
+            android:text="@string/skip"
+            android:textColor="#ffff"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/help_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/why_mobile_number"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/help_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/for_easily_reach_your_order_to_your_place"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
 
     </LinearLayout>
 

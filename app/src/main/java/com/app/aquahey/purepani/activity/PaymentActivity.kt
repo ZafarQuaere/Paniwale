@@ -55,7 +55,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
 
         try {
             val options = JSONObject()
-            options.put("name", product!!.pName)
+            options.put("dealerContact", product!!.pName)
             options.put("description", product!!.price + " x " + order!!.quantity)
             //You can omit the image option to fetch the image from dashboard
             options.put("image", product!!.imagePath)
@@ -77,7 +77,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
     }
 
     /**
-     * The name of the function has to be
+     * The dealerContact of the function has to be
      * onPaymentSuccess
      * Wrap your code in try catch, as shown, to ensure that this method runs correctly
      */
@@ -95,7 +95,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
     }
 
     /**
-     * The name of the function has to be
+     * The dealerContact of the function has to be
      * onPaymentError
      * Wrap your code in try catch, as shown, to ensure that this method runs correctly
      */

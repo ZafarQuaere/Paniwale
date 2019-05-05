@@ -8,10 +8,14 @@ import android.os.Parcelable;
  */
 
 public class LoginResponse implements Parcelable {
-    public int success;
-  //  public int totalItem;
-    public SignIn resultArray;
+    public int status;
+    //  public int totalItem;
+    public SignIn data;
+    public String message;
 
+
+    public LoginResponse() {
+    }
 
     @Override
     public int describeContents() {
@@ -20,21 +24,18 @@ public class LoginResponse implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.success);
-     //   dest.writeInt(this.totalItem);
-        dest.writeParcelable(this.resultArray, flags);
-    }
-
-    public LoginResponse() {
+        dest.writeInt(this.status);
+        dest.writeParcelable(this.data, flags);
+        dest.writeString(this.message);
     }
 
     protected LoginResponse(Parcel in) {
-        this.success = in.readInt();
-      //  this.totalItem = in.readInt();
-        this.resultArray = in.readParcelable(SignIn.class.getClassLoader());
+        this.status = in.readInt();
+        this.data = in.readParcelable(SignIn.class.getClassLoader());
+        this.message = in.readString();
     }
 
-    public static final Parcelable.Creator<LoginResponse> CREATOR = new Parcelable.Creator<LoginResponse>() {
+    public static final Creator<LoginResponse> CREATOR = new Creator<LoginResponse>() {
         @Override
         public LoginResponse createFromParcel(Parcel source) {
             return new LoginResponse(source);

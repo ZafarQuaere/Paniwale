@@ -10,9 +10,13 @@ import java.util.List;
  */
 
 public class ProductResponse implements Parcelable {
-    public int success;
-    public List<Product> resultArray;
+    public int status;
+    public List<Product> data;
+    public String message;
 
+
+    public ProductResponse() {
+    }
 
     @Override
     public int describeContents() {
@@ -21,19 +25,18 @@ public class ProductResponse implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.success);
-        dest.writeTypedList(this.resultArray);
-    }
-
-    public ProductResponse() {
+        dest.writeInt(this.status);
+        dest.writeTypedList(this.data);
+        dest.writeString(this.message);
     }
 
     protected ProductResponse(Parcel in) {
-        this.success = in.readInt();
-        this.resultArray = in.createTypedArrayList(Product.CREATOR);
+        this.status = in.readInt();
+        this.data = in.createTypedArrayList(Product.CREATOR);
+        this.message = in.readString();
     }
 
-    public static final Parcelable.Creator<ProductResponse> CREATOR = new Parcelable.Creator<ProductResponse>() {
+    public static final Creator<ProductResponse> CREATOR = new Creator<ProductResponse>() {
         @Override
         public ProductResponse createFromParcel(Parcel source) {
             return new ProductResponse(source);

@@ -68,6 +68,14 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="spinner_hint">Districts</string>
     <string name="enter_your_register_mobile_number">Enter Your Register Mobile Number</string>
+
+    <string name="confirm_password">confirm Password</string>
     <string name="submit">Submit</string>
+    <string name="enter_new_password">Enter New Password</string>
     <string name="aquahey">AquaHey!</string>
+    <string name="call">CALL</string>
+    <string name="book_order">Book Order</string>
+    <string name="skip">Skip</string>
+    <string name="why_mobile_number">Why Mobile Number?</string>
+    <string name="for_easily_reach_your_order_to_your_place">For Easily Reach your order to your place</string>
 </resources>

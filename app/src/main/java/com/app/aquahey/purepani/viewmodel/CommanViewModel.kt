@@ -3,6 +3,7 @@ package com.app.aquahey.purepani.viewmodel
 import android.content.Context
 import android.databinding.BaseObservable
 import com.app.aquahey.purepani.model.OtpResponse
+import com.app.aquahey.purepani.network.NetworkResponse
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.utils.Utils
 import com.app.aquahey.purepani.view.OnDataLoadCallBack
@@ -11,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class OTPViewModel : BaseObservable() {
+class CommanViewModel : BaseObservable() {
 
 
     fun otpService(context: Context, onDataLoadCallBack: OnDataLoadCallBack, mobile: String) {
@@ -23,7 +24,7 @@ class OTPViewModel : BaseObservable() {
                 if (response.isSuccessful) {
                     val otpResponse = response.body()
                     if (null != otpResponse) {
-                        if (otpResponse.status == "success") {
+                        if (otpResponse.status == "status") {
                             LocalConfiq.putString(context, LocalConfiq.OTP,
                                     Utils.getOTP(otpResponse.sms_text))
 
@@ -38,6 +39,33 @@ class OTPViewModel : BaseObservable() {
             }
 
             override fun onFailure(call: Call<OtpResponse>, t: Throwable) {
+                onDataLoadCallBack.onFailed(t.message)
+            }
+        })
+    }
+
+    fun changePasswordService(onDataLoadCallBack: OnDataLoadCallBack, mobile: String, pass: String) {
+        val api = RetrofitBase.create()
+        val call = api.changePassword(mobile, pass)
+
+        call.enqueue(object : Callback<NetworkResponse> {
+            override fun onResponse(call: Call<NetworkResponse>, response: Response<NetworkResponse>) {
+                if (response.isSuccessful) {
+                    val otpResponse = response.body()
+                    if (null != otpResponse) {
+                        if (otpResponse.success == 1) {
+
+                            onDataLoadCallBack.onSuccess()
+                        } else {
+                            onDataLoadCallBack.onFailed("Invalid User ")
+                        }
+                    }
+                } else {
+                    onDataLoadCallBack.onFailed("Server Problem")
+                }
+            }
+
+            override fun onFailure(call: Call<NetworkResponse>, t: Throwable) {
                 onDataLoadCallBack.onFailed(t.message)
             }
         })

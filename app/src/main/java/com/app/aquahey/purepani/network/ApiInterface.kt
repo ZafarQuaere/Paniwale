@@ -2,7 +2,6 @@ package com.nussd.todo.network
 
 import com.app.aquahey.purepani.model.*
 import com.app.aquahey.purepani.network.NetworkResponse
-import com.app.aquahey.purepani.viewmodel.MobileVerifyModelView
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -44,7 +43,10 @@ interface ApiInterface {
     @GET("nearby-aqua")
     fun product(@Query("pincode") pincode: String,
                 @Query("productType") productType: Int,
-                @Query("isBrand") isBrand: Int): Call<ProductResponse>
+                @Query("isBrand") isBrand: Int,
+                @Query("city") city: String,
+                @Query("state") state: String
+    ): Call<ProductResponse>
 
     @GET("address")
     fun getAddress(@Query("userId") userId: String): Call<AddressResponse>
@@ -56,14 +58,15 @@ interface ApiInterface {
     fun getBrands(): Call<BrandData>
 
 
-
     @GET("otp_service")
     fun getOtp(@Query("mobile") mobile: String): Call<OtpResponse>
 
-    @GET("mobile-verify")
+    @GET("dealerContact-verify")
     fun getMobileNoVerify(@Query("mobile") mobile: String?): Call<NumberVerify>
 
-
+    @GET("change-password")
+    fun changePassword(@Query("mobile") mobile: String,
+                       @Query("password") pass: String): Call<NetworkResponse>
 
 
 /*
