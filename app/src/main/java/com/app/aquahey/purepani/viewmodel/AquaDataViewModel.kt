@@ -26,10 +26,10 @@ class AquaDataViewModel(val context: Context?, onItemClickCallBack: OnItemClickC
         this.adapter = ProductAdapter(context, onItemClickCallBack)
     }
 
-    fun setData(onDataLoadCallBack: OnDataLoadCallBack, pincode: String, productType: Int, isBrand: Int) {
+    fun setData(onDataLoadCallBack: OnDataLoadCallBack, pincode: String, productType: Int, isBrand: Int, city: String, state: String) {
 
         val api = RetrofitBase.create()
-        val call = api.product(pincode, productType, isBrand)
+        val call = api.product(pincode, productType, isBrand, city, state)
 
         call.enqueue(object : Callback<ProductResponse> {
             override fun onResponse(call: Call<ProductResponse>, response: Response<ProductResponse>) {
@@ -51,8 +51,6 @@ class AquaDataViewModel(val context: Context?, onItemClickCallBack: OnItemClickC
                 onDataLoadCallBack.onFailed(t.message)
             }
         })
-
-
     }
 }
 

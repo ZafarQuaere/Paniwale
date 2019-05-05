@@ -18,6 +18,9 @@ class LocalConfiq {
         var MOBILE = "dealerContact"
         var OTP = "otp"
         var PINCODE = "pincode"
+        var CITY = "city"
+        var STATE = "state"
+
 
         var IS_ADDRESS = "isAddress"
 

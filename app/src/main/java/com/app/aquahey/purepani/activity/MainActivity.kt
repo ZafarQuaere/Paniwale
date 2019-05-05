@@ -159,6 +159,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val longitude = mylocation!!.longitude
             addresses = geocoder!!.getFromLocation(latitude, longitude, 1)
             LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, addresses!![0].postalCode)
+            LocalConfiq.putString(applicationContext, LocalConfiq.CITY, addresses!![0].locality)
+            LocalConfiq.putString(applicationContext, LocalConfiq.STATE, addresses!![0].adminArea)
+
 
 
         }

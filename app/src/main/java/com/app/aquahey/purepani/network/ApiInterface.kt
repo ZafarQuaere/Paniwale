@@ -43,7 +43,10 @@ interface ApiInterface {
     @GET("nearby-aqua")
     fun product(@Query("pincode") pincode: String,
                 @Query("productType") productType: Int,
-                @Query("isBrand") isBrand: Int): Call<ProductResponse>
+                @Query("isBrand") isBrand: Int,
+                @Query("city") city: String,
+                @Query("state") state: String
+    ): Call<ProductResponse>
 
     @GET("address")
     fun getAddress(@Query("userId") userId: String): Call<AddressResponse>

@@ -51,7 +51,8 @@ class AquaListFragment : BaseFragment(), OnDataLoadCallBack, OnItemClickCallBack
         val productType = arguments!!.getInt("ProductType")
         val isBrand = arguments!!.getInt("IsBrand")
 
-        aquaDataViewModel.setData(this, LocalConfiq.getString(context, LocalConfiq.PINCODE), productType, isBrand)
+        aquaDataViewModel.setData(this, LocalConfiq.getString(context, LocalConfiq.PINCODE), productType, isBrand,
+                LocalConfiq.getString(context, LocalConfiq.CITY), LocalConfiq.getString(context, LocalConfiq.STATE))
     }
 
     private fun initRecyclerView(view: View) {
