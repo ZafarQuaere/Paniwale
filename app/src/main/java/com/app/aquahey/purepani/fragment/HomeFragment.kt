@@ -39,7 +39,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             v.id == R.id.nearby -> if (ErrorUtils.isOnline(context)) openFragmentAquaList(1)
             v.id == R.id.tanker -> if (ErrorUtils.isOnline(context)) openFragmentAquaList(2)
             v.id == R.id.my_aqua -> {
-                Toast.makeText(context, "coming soon", Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(context, "coming soon")
             }
         }
     }

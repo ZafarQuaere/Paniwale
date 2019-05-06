@@ -80,11 +80,11 @@ class LoginActivity : BaseActivity() {
                             startActivity(intent)
                             finish()
                         } else {
-                            Toast.makeText(applicationContext, "Invalid User ", Toast.LENGTH_LONG).show()
+                            ErrorUtils.showToast(applicationContext, "Invalid User ")
                         }
                     }
                 } else {
-                    Toast.makeText(applicationContext, "Server Problem ", Toast.LENGTH_LONG).show()
+                    ErrorUtils.showToast(applicationContext, "Server Problem ")
 
                 }
                 hideDialog()
@@ -92,7 +92,7 @@ class LoginActivity : BaseActivity() {
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 hideDialog()
-                Toast.makeText(applicationContext, "Error. " + t.message, Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Error. " + t.message)
             }
         })
     }

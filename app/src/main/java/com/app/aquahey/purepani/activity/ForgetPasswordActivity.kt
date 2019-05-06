@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.app.aquahey.purepani.R
 import com.app.aquahey.purepani.databinding.ActivityForgetPasswordBinding
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.view.OnDataLoadCallBack
 import com.app.aquahey.purepani.viewmodel.CommanViewModel
 
@@ -22,7 +23,7 @@ class ForgetPasswordActivity : BaseActivity(), OnDataLoadCallBack {
                 val commanViewModel = CommanViewModel()
                 commanViewModel.changePasswordService(this, "9022335474", binding.newPass.text.toString())
             } else {
-                Toast.makeText(applicationContext, "Field Should Blank", Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Field Should Blank")
             }
         }
 
@@ -37,7 +38,7 @@ class ForgetPasswordActivity : BaseActivity(), OnDataLoadCallBack {
     }
 
     override fun onFailed(error: String?) {
-        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(applicationContext, error)
     }
 
 }

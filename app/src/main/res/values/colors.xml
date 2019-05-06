@@ -18,6 +18,13 @@
     <color name="black">#222223</color>
 
 
+    <!-- Dialog single button colors -->
+    <color name="dialog_text_color">#041e41</color>
+    <color name="dialog_bg_color">#D1D3D3</color>
+    <color name="dialog_log_out_separator_color">#646569</color>
+    <color name="dialog_log_out_btn_text_color">#48C8B9</color>
+    <color name="dialog_separator_color">#646569</color>
+    <color name="dialog_btn_text_color">#48C8B9</color>
 
     <!-- Introduction Screen colors-->
     <!-- Screens background color-->

@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.app.aquahey.purepani.R
 import com.app.aquahey.purepani.databinding.ActivityOtpBinding
 import com.app.aquahey.purepani.model.SignIn
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.view.OnDataLoadCallBack
 import com.app.aquahey.purepani.viewmodel.CommanViewModel
@@ -48,7 +49,7 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
     }
 
     override fun onFailed(error: String?) {
-        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(applicationContext, error)
         hideDialog()
     }
 
@@ -65,11 +66,11 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
                         finish()
                     }
                 } else {
-                    Toast.makeText(applicationContext, "OTP Not Match", Toast.LENGTH_LONG).show()
+                    ErrorUtils.showToast(applicationContext, "OTP Not Match")
                 }
 
             } else {
-                Toast.makeText(applicationContext, "Please Enter OTP", Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Please Enter OTP")
             }
         } else if (R.id.cancel == p0.id) {
             onBackPressed()
@@ -89,7 +90,7 @@ class OTPActivity : BaseActivity(), OnDataLoadCallBack, View.OnClickListener {
             }
 
             override fun onFailed(error: String) {
-                Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, error)
                 hideDialog()
             }
         }

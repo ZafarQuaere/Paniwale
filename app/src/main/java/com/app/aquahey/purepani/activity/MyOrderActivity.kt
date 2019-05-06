@@ -16,6 +16,7 @@ import com.app.aquahey.purepani.model.MyOrder
 import com.app.aquahey.purepani.model.MyViewHolder
 import com.app.aquahey.purepani.model.MyorderResponse
 import com.app.aquahey.purepani.model.Product
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.utils.ImageUtil
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -117,11 +118,11 @@ class MyOrderActivity : AppCompatActivity() {
                             if (null != myorderResponse.resultArray && myorderResponse.resultArray.isNotEmpty()) {
                                 getMyOrder(myorderResponse.resultArray)
                             } else {
-                                Toast.makeText(applicationContext, "No Order", Toast.LENGTH_LONG).show()
+                                ErrorUtils.showToast(applicationContext, "No Order")
                             }
 
                         } else {
-                            Toast.makeText(applicationContext, "No Order", Toast.LENGTH_LONG).show()
+                            ErrorUtils.showToast(applicationContext, "No Order")
                         }
                     }
                 }
@@ -129,7 +130,7 @@ class MyOrderActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<MyorderResponse>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error. " + t.message, Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Error. " + t.message)
             }
         })
     }

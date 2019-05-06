@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.app.aquahey.purepani.R
 import com.app.aquahey.purepani.databinding.FragmentBrandBinding
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.nussd.emptodo.viewModel.DataViewModel
 
 
@@ -54,6 +55,6 @@ class BrandFragment : BaseFragment(), DataViewModel.OnLoadTaskCallback {
 
     override fun onFailed(error: String?) {
         hideDialog()
-        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(context, error)
     }
 }// Required empty public constructor

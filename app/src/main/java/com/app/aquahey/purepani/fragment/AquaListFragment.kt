@@ -17,6 +17,7 @@ import com.app.aquahey.purepani.activity.OTPActivity
 import com.app.aquahey.purepani.databinding.FragmentAquaListBinding
 import com.app.aquahey.purepani.model.Product
 import com.app.aquahey.purepani.model.SignIn
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.view.OnDataLoadCallBack
 import com.app.aquahey.purepani.view.OnItemClickCallBack
@@ -68,7 +69,7 @@ class AquaListFragment : BaseFragment(), OnDataLoadCallBack, OnItemClickCallBack
     }
 
     override fun onFailed(error: String?) {
-        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(context, error)
 
         hideDialog()
     }

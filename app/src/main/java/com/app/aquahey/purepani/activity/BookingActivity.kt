@@ -111,7 +111,7 @@ class BookingActivity : BaseActivity(),
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Please Select Delivery Address", Toast.LENGTH_LONG).show()
+                    ErrorUtils.showToast(applicationContext, "Please Select Delivery Address")
 
                 }
 
@@ -197,7 +197,7 @@ class BookingActivity : BaseActivity(),
                                     status.startResolutionForResult(this@BookingActivity,
                                             REQUEST_CHECK_SETTINGS_GPS)
                                 } catch (e: IntentSender.SendIntentException) {
-                                    Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
+                                    ErrorUtils.showToast(applicationContext, e.message)
                                 }
 
                             LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
@@ -220,7 +220,7 @@ class BookingActivity : BaseActivity(),
 
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-        Toast.makeText(applicationContext, p0.errorMessage, Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(applicationContext, p0.errorMessage)
 
     }
 
@@ -229,7 +229,7 @@ class BookingActivity : BaseActivity(),
     }
 
     override fun onConnectionSuspended(p0: Int) {
-        Toast.makeText(applicationContext, "Suspended", Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(applicationContext, "Suspended")
     }
 
 
@@ -270,7 +270,7 @@ class BookingActivity : BaseActivity(),
         submit.setOnClickListener {
             if (!ErrorUtils.emptyCheck(enteredAddress)
                     && !ErrorUtils.emptyCheck(pincode)) {
-                Toast.makeText(applicationContext, "Submitted", Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Submitted")
                 val deliveryAdd = DeliveryAddress()
                 deliveryAdd.addressOne = enteredAddress.text.toString() + " " +
                         city.selectedItem.toString() + " " +
@@ -336,7 +336,7 @@ class BookingActivity : BaseActivity(),
             }
 
             override fun onFailure(call: Call<NetworkResponse>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error. " + t.message, Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Error. " + t.message)
             }
         })
     }
@@ -367,7 +367,7 @@ class BookingActivity : BaseActivity(),
             }
 
             override fun onFailure(call: Call<AddressResponse>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error. " + t.message, Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Error. " + t.message)
             }
         })
     }

@@ -18,6 +18,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.app.aquahey.purepani.R
 import com.app.aquahey.purepani.fragment.HomeFragment
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.utils.PermissionUtils
 import com.google.android.gms.common.ConnectionResult
@@ -54,8 +55,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+       // drawer_layout.addDrawerListener(toggle)
+       // toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
         setUpGClient()
@@ -76,18 +77,26 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-   /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
-    }*/
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.action_help -> {
+                return true
+            }
+            R.id.action_about -> {
+                return true
+            }
+            R.id.action_contact -> {
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -166,7 +175,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-        Toast.makeText(applicationContext, p0.errorMessage, Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(applicationContext, p0.errorMessage)
 
     }
 
@@ -178,7 +187,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onConnectionSuspended(p0: Int) {
-        Toast.makeText(applicationContext, "Suspended", Toast.LENGTH_LONG).show()
+        ErrorUtils.showToast(applicationContext, "Suspended")
     }
 
     private fun getMyLocation() {
@@ -219,7 +228,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                                 status.startResolutionForResult(this@MainActivity,
                                         REQUEST_CHECK_SETTINGS_GPS)
                             } catch (e: IntentSender.SendIntentException) {
-                                Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
+                                ErrorUtils.showToast(applicationContext, e.message)
                             }
                             LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
                             }

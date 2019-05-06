@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.app.aquahey.purepani.R;
 import com.app.aquahey.purepani.databinding.ProductViewBinding;
 import com.app.aquahey.purepani.model.Product;
+import com.app.aquahey.purepani.utils.ErrorUtils;
 import com.app.aquahey.purepani.view.OnItemClickCallBack;
 import com.app.aquahey.purepani.viewmodel.AquasViewHolder;
 
@@ -47,7 +48,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.DataView
         holder.binding.order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "coming soon", Toast.LENGTH_LONG).show();
+                ErrorUtils.showToast(context, "coming soon");
                /* final Intent intent = new Intent(context, BookingActivity.class);
                 intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("Product", product);

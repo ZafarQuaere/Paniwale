@@ -11,6 +11,7 @@ import com.app.aquahey.purepani.R
 import com.app.aquahey.purepani.model.Order
 import com.app.aquahey.purepani.model.Product
 import com.app.aquahey.purepani.network.NetworkResponse
+import com.app.aquahey.purepani.utils.ErrorUtils
 import com.nussd.todo.network.RetrofitBase
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
@@ -70,8 +71,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
 
             co.open(activity, options)
         } catch (e: Exception) {
-            Toast.makeText(activity, "Error in payment: " + e.message, Toast.LENGTH_SHORT)
-                    .show()
+            ErrorUtils.showToast(activity, "Error in payment: " + e.message)
             e.printStackTrace()
         }
     }
@@ -87,7 +87,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
             order!!.paymentId = razorpayPaymentID
             order!!.orderDate = currentDateTimeString
             order()
-            Toast.makeText(this, "Payment Successful: $razorpayPaymentID", Toast.LENGTH_SHORT).show()
+            ErrorUtils.showToast(this, "Payment Successful: $razorpayPaymentID")
         } catch (e: Exception) {
             Log.e(TAG, "Exception in onPaymentSuccess", e)
         }
@@ -101,7 +101,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
      */
     override fun onPaymentError(code: Int, response: String) {
         try {
-            Toast.makeText(this, "Payment failed: $code $response", Toast.LENGTH_SHORT).show()
+            ErrorUtils.showToast(this, "Payment failed: $code $response")
         } catch (e: Exception) {
             Log.e(TAG, "Exception in onPaymentError", e)
         }
@@ -127,7 +127,7 @@ class PaymentActivity : Activity(), PaymentResultListener {
             }
 
             override fun onFailure(call: Call<NetworkResponse>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error. " + t.message, Toast.LENGTH_LONG).show()
+                ErrorUtils.showToast(applicationContext, "Error. " + t.message)
             }
         })
     }
