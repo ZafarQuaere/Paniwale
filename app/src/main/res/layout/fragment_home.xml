@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -90,18 +91,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="AquaHey!"
+        style="@style/XLargeTextview"
+        android:layout_margin="8dp"
+        android:text="@string/app_name"
+        android:textSize="@dimen/xx_large_text"
         android:textAlignment="center"
-        android:textColor="#ffff"
-        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -113,22 +107,20 @@
         android:id="@+id/aqua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/order_aqua"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47000003" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <TextView
         android:id="@+id/textView3"
@@ -211,162 +203,126 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-</android.support.constraint.ConstraintLayout><!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+</android.support.constraint.ConstraintLayout>
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.ikram_tiss.purepani.activity.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    android:background="@drawable/gradient"
+    tools:context=".activity.MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:textStyle="italic"
-        android:text="Start Order"
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:padding="8dp"
-                android:src="@drawable/twenty" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif-light"
-                android:text="20 Liter Bottle"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/bulk" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif-light"
-                android:text="Bulk Orders"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:padding="8dp"
-                android:src="@drawable/party" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif-light"
-                android:text="Wedding / Party"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    &lt;!&ndash; <android.support.v7.widget.RecyclerViewtw
-         android:id="@+id/productList"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:visibility="gone" />
- &ndash;&gt;
+        android:id="@+id/textView"
+        style="@style/XLargeTextview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_30dp"
+        android:text="@string/app_name"
+        android:textSize="@dimen/xx_large_text"
+        android:textStyle="bold" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="16dp">
+
+        <ImageView
+            android:id="@+id/nearby"
+            style="@style/HomeCircleImageStyle"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:background="@drawable/imgback"
+            android:elevation="@dimen/_10dp"
+            app:srcCompat="@drawable/drops" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:textStyle="italic"
-            android:fontFamily="sans-serif-medium"
-            android:text="Select Your Choice"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-        <TextView
-            android:id="@+id/seeall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_alignParentRight="true"
+            android:id="@+id/aqua"
+            style="@style/RegularTextview"
+            android:layout_width="@dimen/circle_image_width"
+            android:layout_below="@+id/nearby"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:gravity="center"
+            android:text="@string/order_aqua" />
+
+        <ImageView
+            android:id="@+id/brand_list"
+            android:layout_alignBaseline="@+id/nearby"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="See All"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:layout_marginStart="@dimen/_10dp"
+            android:background="@drawable/imgback"
+            android:elevation="@dimen/_10dp"
+            style="@style/HomeCircleImageStyle"
+            app:srcCompat="@drawable/brand" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/RegularTextview"
+            android:layout_width="@dimen/circle_image_width"
+            android:layout_below="@+id/brand_list"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="center"
+            android:text="@string/your_favourite" />
+
+
+        <ImageView
+            android:id="@+id/tanker"
+            android:layout_below="@id/nearby"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:background="@drawable/imgback"
+            android:elevation="@dimen/_10dp"
+            style="@style/HomeCircleImageStyle"
+            app:srcCompat="@drawable/tankar" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/RegularTextview"
+            android:layout_width="@dimen/circle_image_width"
+            android:layout_below="@+id/tanker"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:gravity="center"
+            android:text="@string/tanker" />
+
+
+        <ImageView
+            android:id="@+id/my_aqua"
+            android:layout_below="@id/nearby"
+            android:layout_alignBaseline="@+id/tanker"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/imgback"
+            android:elevation="@dimen/_10dp"
+            style="@style/HomeCircleImageStyle"
+            app:srcCompat="@drawable/infosign" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/RegularTextview"
+            android:layout_width="@dimen/circle_image_width"
+            android:layout_below="@id/my_aqua"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="center"
+            android:text="@string/my_aqua" />
 
     </RelativeLayout>
 
-    <FrameLayout
-        android:id="@+id/brand_container"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@android:color/white"
-        android:visibility="visible" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:textStyle="italic"
-        android:fontFamily="sans-serif-medium"
-        android:text="Your Recent Order"
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
-
-</LinearLayout>
--->
+        android:id="@+id/textView8"
+        style="@style/LargeTextview"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_20dp"
+        android:text="@string/water_delivery_app"
+        android:textAlignment="center" />
+</RelativeLayout>

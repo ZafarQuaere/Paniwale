@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">AquaHey</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" >AquaHey!</string>
 
     <string name="next">NEXT</string>
     <string name="start">GOT IT</string>
@@ -97,4 +97,11 @@
     <string name="skip">Skip</string>
     <string name="why_mobile_number">Why Mobile Number?</string>
     <string name="for_easily_reach_your_order_to_your_place">For Easily Reach your order to your place</string>
+    <string name="order_details">Order Details</string>
+    <string name="price_label">Price:</string>
+    <string name="total_rs">Total RS:</string>
+    <string name="your_favourite">Your Favorite</string>
+    <string name="tanker">Tanker</string>
+    <string name="my_aqua">My Aqua</string>
+    <string name="water_delivery_app">A Water Delivering App!</string>
 </resources>

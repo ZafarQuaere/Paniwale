@@ -13,4 +13,20 @@
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
+
+    <!-- General Dimensions -->
+    <dimen name="regular_text">14sp</dimen>
+    <dimen name="actionbar_title_text">16sp</dimen>
+    <dimen name="xx_large_text">24sp</dimen>
+    <dimen name="x_large_text">20sp</dimen>
+    <dimen name="button_height">45dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+
+
+    <!-- Home Screen -->
+    <dimen name="circle_image_height">120dp</dimen>
+    <dimen name="circle_image_width">120dp</dimen>
+    <dimen name="circle_image_padding">25dp</dimen>
 </resources>

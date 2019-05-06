@@ -29,4 +29,54 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- XLarge TextView -->
+    <style name="XLargeTextview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/xx_large_text</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Large TextView -->
+    <style name="LargeTextview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/x_large_text</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Regular TextView -->
+    <style name="RegularTextview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Button Text -->
+    <style name="ButtonTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:elevation">@dimen/_10dp</item>
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginHorizontal">@dimen/_30dp</item>
+    </style>
+
+
+    <!-- Regular TextView -->
+    <style name="HomeCircleImageStyle">
+        <item name="android:layout_width">@dimen/circle_image_width</item>
+        <item name="android:layout_height">@dimen/circle_image_height</item>
+        <item name="android:padding">@dimen/circle_image_padding</item>
+    </style>
 </resources>

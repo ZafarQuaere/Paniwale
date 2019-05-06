@@ -45,7 +45,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setSupportActionBar(toolbar)
+       // setSupportActionBar(toolbar)
         geocoder = Geocoder(applicationContext, Locale.getDefault())
         openDialog()
 
@@ -53,6 +53,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -75,11 +76,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+   /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
-    }
+    }*/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
@@ -161,9 +162,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, addresses!![0].postalCode)
             LocalConfiq.putString(applicationContext, LocalConfiq.CITY, addresses!![0].locality)
             LocalConfiq.putString(applicationContext, LocalConfiq.STATE, addresses!![0].adminArea)
-
-
-
         }
     }
 
@@ -223,7 +221,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                             } catch (e: IntentSender.SendIntentException) {
                                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
                             }
-
                             LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
                             }
                         }
@@ -241,6 +238,4 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
         }
     }
-
-
 }

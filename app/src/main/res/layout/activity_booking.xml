@@ -3,18 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/gradient"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/LargeTextview"
         android:layout_margin="16dp"
         android:gravity="center_horizontal"
-        android:text="Order Details"
-        android:textColor="#ffff"
-        android:textSize="25sp" />
+        android:text="@string/order_details"/>
 
 
     <LinearLayout
@@ -72,12 +71,11 @@
             <TextView
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/RegularTextview"
                 android:layout_margin="4dp"
                 android:text="Bisleri 5 ltr"
                 android:textAlignment="center"
                 android:textColor="#000"
-                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -123,22 +121,20 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/RegularTextview"
                     android:layout_margin="8dp"
-                    android:text="Price:"
+                    android:text="@string/price_label"
                     android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textColor="#000" />
 
                 <TextView
+                    style="@style/RegularTextview"
                     android:id="@+id/p_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    tools:text="00"
                     android:layout_margin="8dp"
                     android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textStyle="bold"
+                    android:textColor="#000"/>
 
             </LinearLayout>
 
@@ -149,25 +145,23 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/RegularTextview"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:text="Total RS:"
+                    android:text="@string/total_rs"
                     android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textColor="#000"/>
 
 
                 <TextView
+                    style="@style/RegularTextview"
                     android:id="@+id/total"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:textAlignment="center"
                     android:textColor="#000"
-                    android:textSize="18sp" />
+                    tools:text="00"
+                  android:textStyle="bold"/>
 
             </LinearLayout>
 
