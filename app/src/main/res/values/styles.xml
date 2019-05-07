@@ -29,6 +29,30 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- Intro TextView -->
+    <style name="Intro" />
+    <style name="Intro.Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/slide_title</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Intro.Description">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/slide_desc</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingStart">@dimen/desc_padding</item>
+        <item name="android:paddingEnd">@dimen/desc_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginTop">@dimen/_20dp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <!-- XLarge TextView -->
     <style name="XLargeTextview">
         <item name="android:layout_width">wrap_content</item>
