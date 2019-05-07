@@ -200,7 +200,6 @@ public class WelcomeActivity extends AppCompatActivity {
                     TextView textTitle4 = (TextView)view.findViewById(R.id.textSlideTitle4);
                     textTitle4.setText("Title4");
                     break;
-
             }
             container.addView(view);
 
