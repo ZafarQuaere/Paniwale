@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 
 import com.app.aquahey.purepani.R;
 import com.app.aquahey.purepani.activity.MainActivity;
+import com.app.aquahey.purepani.utils.ErrorUtils;
 
 import org.w3c.dom.Text;
 
@@ -183,24 +186,24 @@ public class WelcomeActivity extends AppCompatActivity {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             View view = layoutInflater.inflate(layouts[position], container, false);
-            switch (view.getId()){
-                case R.id.textSlideTitle1:
-                    TextView textTitle = (TextView)view.findViewById(R.id.textSlideTitle1);
-                    textTitle.setText("Title1");
+
+            ErrorUtils.DEBUG("instantiateItem() [position: " + position + "]" + " childCount:" + container.getChildCount());
+          /*  TextView titleTextView = (TextView) view.findViewById(R.id.textSlideTitle);
+            switch (position){
+                case 0:
+                    titleTextView.setText("Custom Title1");
                     break;
-                case R.id.textSlideTitle2:
-                    TextView textTitle2 = (TextView)view.findViewById(R.id.textSlideTitle2);
-                    textTitle2.setText("Title2");
+                case 1:
+                    titleTextView.setText("Custom Title2");
                     break;
-                case R.id.textSlideTitle3:
-                    TextView textTitle3 = (TextView)view.findViewById(R.id.textSlideTitle3);
-                    textTitle3.setText("Title3");
+                    case 2:
+                        titleTextView.setText("Custom Title3");
                     break;
-                case R.id.textSlideTitle4:
-                    TextView textTitle4 = (TextView)view.findViewById(R.id.textSlideTitle4);
-                    textTitle4.setText("Title4");
+                case 3:
+                    titleTextView.setText("Custom Title4");
                     break;
-            }
+            }*/
+
             container.addView(view);
 
             return view;
@@ -217,26 +220,6 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
 
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return getCustomPageTitle(position);
-        }
-
-        private CharSequence getCustomPageTitle(int position) {
-            switch (position){
-                case 0:
-                    return "My Title 1";
-                case 1:
-                    return "My Title 2";
-                case 2:
-                    return "My Title 3";
-                case 3:
-                    return "My Title 4";
-
-            }
-            return "Custom Title";
-        }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {

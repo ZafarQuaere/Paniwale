@@ -8,21 +8,19 @@
     <string name="slide_1_desc">AquaHey! Lets You Discover Water Supplier That Deliver Near You.!</string>
 
     <string name="slide_2_title">Order Aqua</string>
-    <string name="slide_2_desc">Select Items From The Item List.\nEnter Choose Delivery Address!</string>
+    <string name="slide_2_desc">Select Items From The Item List.Enter Choose Delivery Address!</string>
 
     <string name="slide_3_title">Schedule Delivery</string>
-    <string name="slide_3_desc">Select Time Of Delivery (Now/Later).\nChoose Payment Option (Online/COD)!</string>
+    <string name="slide_3_desc">Select Time Of Delivery (Now/Later).Choose Payment Option (Online/COD)!</string>
 
     <string name="slide_4_title">Order Received</string>
-    <string name="slide_4_desc">Receive Delivery From The Dealer Near You\nRate Your Delivery Experience</string>
-
+    <string name="slide_4_desc">Receive Delivery From The Dealer Near You.Rate Your Delivery Experience</string>
 
 
 
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
 
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="password">Password</string>
     <string name="email">Email</string>

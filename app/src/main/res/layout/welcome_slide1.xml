@@ -14,10 +14,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="300dp"
-            android:src="@drawable/img_slider1" />
+            android:src="@drawable/slider_img1" />
 
         <TextView
-            android:id="@+id/textSlideTitle1"
+            android:id="@+id/textSlideTitle"
             style="@style/Intro.Title"
             android:text="@string/slide_1_title"/>
 
