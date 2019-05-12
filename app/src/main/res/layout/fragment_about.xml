@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="@dimen/_20dp"
+    tools:context=".fragment.AboutFragment">
+
+
+    <TextView
+        android:id="@+id/textContact"
+        style="@style/LargeTextview"
+        android:drawableStart="@drawable/ic_my_account"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:text="@string/about_us"
+        android:textColor="@color/black" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/RegularTextview"
+            android:drawableStart="@drawable/ic_settings"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:gravity="center_vertical"
+            android:text="@string/text_visit_our_website"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/textWebsite"
+            style="@style/RegularTextview"
+            android:linksClickable="true"
+            android:text="@string/website_link"
+            android:textColorLink="@color/colorPrimary"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/RegularTextview"
+            android:drawableStart="@drawable/ic_settings"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:gravity="center_vertical"
+            android:text="@string/text_like_on_fb"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/text_fb_link"
+            style="@style/RegularTextview"
+            android:linksClickable="true"
+            android:text="@string/fb_link"
+            android:textColorLink="@color/colorPrimary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/RegularTextview"
+            android:drawableStart="@drawable/ic_settings"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:gravity="center_vertical"
+            android:text="@string/text_follow_us_on_insta"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/text_insta_link"
+            style="@style/RegularTextview"
+            android:linksClickable="true"
+            android:text="@string/insta_link"
+            android:textColorLink="@color/colorPrimary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <TextView
+        style="@style/RegularTextview"
+        android:layout_marginTop="@dimen/_20dp"
+        android:autoLink="web"
+        android:drawableStart="@drawable/ic_settings"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:text="Rate Us on Play Store"
+        android:textColor="@color/black" />
+
+</LinearLayout>
