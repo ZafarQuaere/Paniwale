@@ -89,12 +89,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             R.id.action_help -> {
+                ErrorUtils.showToast(applicationContext,"Help Clicked")
                 return true
             }
             R.id.action_about -> {
+                ErrorUtils.showToast(applicationContext,"about Clicked");
                 return true
             }
             R.id.action_contact -> {
+                ErrorUtils.showToast(applicationContext,"contact Clicked");
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

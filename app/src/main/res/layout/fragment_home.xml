@@ -278,7 +278,7 @@
             android:background="@drawable/imgback"
             android:elevation="@dimen/_10dp"
             style="@style/HomeCircleImageStyle"
-            app:srcCompat="@drawable/tankar" />
+            app:srcCompat="@drawable/tanker" />
 
         <TextView
             android:id="@+id/textView3"
