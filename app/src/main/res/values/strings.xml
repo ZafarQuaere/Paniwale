@@ -102,16 +102,20 @@
     <string name="my_aqua">My Aqua</string>
     <string name="water_delivery_app">A Water Delivering App!</string>
 
-    <string name="action_help">Help</string>
+    <string name="action_help">Help &amp; Contact</string>
     <string name="action_about">About Us</string>
     <string name="action_contact">Contact Us</string>
     <string name="contact_us">Contact Us</string>
     <string name="website_link"><a href="http://aquahey.com/website/index.html"> www.aquahey.com</a></string>
     <string name="fb_link"><a href="https://www.facebook.com/AquaHeyApp/?modal=admin_todo_tour"> facebook.com/aquahey</a></string>
     <string name="insta_link"><a href="https://www.instagram.com/aquaheyapp/"> instagram.com/aquahey</a></string>
+    <string name="play_link"><a href="https://play.google.com/store/apps/details?id=au.com.intelematics.EntuneLexus&amp;hl=en_AU"> playstore.com/aquahey</a></string>
+
     <string name="text_visit_our_website">Visit Our Website : </string>
     <string name="text_like_on_fb">Like Us on Facebook :</string>
     <string name="text_follow_us_on_insta">Follow Us on Instagram :</string>
     <string name="about_us">About Us</string>
+    <string name="rate_us_on_playstore">Rate Us on Play Store:</string>
+    <string name="app_version">App Version: </string>
 
 </resources>

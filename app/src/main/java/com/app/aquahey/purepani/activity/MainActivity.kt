@@ -17,6 +17,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.app.aquahey.purepani.R
+import com.app.aquahey.purepani.fragment.AboutFragment
+import com.app.aquahey.purepani.fragment.HelpNContactFragment
 import com.app.aquahey.purepani.fragment.HomeFragment
 import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.utils.LocalConfiq
@@ -89,17 +91,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             R.id.action_help -> {
-                ErrorUtils.showToast(applicationContext,"Help Clicked")
+                openContactFragment()
                 return true
             }
             R.id.action_about -> {
-                ErrorUtils.showToast(applicationContext,"about Clicked");
+                openAboutFragment()
                 return true
             }
-            R.id.action_contact -> {
-                ErrorUtils.showToast(applicationContext,"contact Clicked");
-                return true
-            }
+
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -129,6 +128,24 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun openHomeFragment() {
         val frag = HomeFragment()
+        val manager = supportFragmentManager
+        val transaction = manager!!.beginTransaction()
+        transaction.add(R.id.home_container, frag, "Home")
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun openContactFragment() {
+        val frag = HelpNContactFragment()
+        val manager = supportFragmentManager
+        val transaction = manager!!.beginTransaction()
+        transaction.add(R.id.home_container, frag, "Home")
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun openAboutFragment() {
+        val frag = AboutFragment()
         val manager = supportFragmentManager
         val transaction = manager!!.beginTransaction()
         transaction.add(R.id.home_container, frag, "Home")

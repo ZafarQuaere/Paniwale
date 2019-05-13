@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.aquahey.purepani.R;
+import com.app.aquahey.purepani.utils.Utils;
 
 
 public class AboutFragment extends Fragment {
@@ -33,9 +34,18 @@ public class AboutFragment extends Fragment {
         TextView textWebsite = (TextView) view.findViewById(R.id.textWebsite);
         TextView text_fb_link = (TextView) view.findViewById(R.id.text_fb_link);
         TextView text_insta_link = (TextView) view.findViewById(R.id.text_insta_link);
+        TextView textAppVersion = (TextView) view.findViewById(R.id.textAppVersion);
+        textAppVersion.setText("  "+Utils.getAppVersion(getActivity()));
+
         textWebsite.setMovementMethod(LinkMovementMethod.getInstance());
         text_fb_link.setMovementMethod(LinkMovementMethod.getInstance());
         text_insta_link.setMovementMethod(LinkMovementMethod.getInstance());
+        view.findViewById(R.id.textPlayLink).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.rateUsOnPlayStore(getActivity());
+            }
+        });
     }
 
 
