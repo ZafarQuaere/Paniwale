@@ -220,13 +220,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                                         .checkSelfPermission(applicationContext,
                                                 Manifest.permission.ACCESS_FINE_LOCATION)
                                 if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-                                    mylocation = LocationServices.FusedLocationApi
-                                            .getLastLocation(googleApiClient)
+                                    mylocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
                                 }
                             }
                             LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
-                                status.startResolutionForResult(this@MainActivity,
-                                        REQUEST_CHECK_SETTINGS_GPS)
+                                status.startResolutionForResult(this@MainActivity, REQUEST_CHECK_SETTINGS_GPS)
                             } catch (e: IntentSender.SendIntentException) {
                                 ErrorUtils.showToast(applicationContext, e.message)
                             }
@@ -243,7 +241,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when (requestCode) {
             REQUEST_CHECK_SETTINGS_GPS -> when (resultCode) {
                 Activity.RESULT_OK -> getMyLocation()
-                Activity.RESULT_CANCELED -> finish()
+                //Activity.RESULT_CANCELED ->
             }
         }
     }
