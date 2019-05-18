@@ -19,6 +19,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import com.app.aquahey.purepani.R
@@ -51,7 +52,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // setSupportActionBar(toolbar)
+
+        val toolbar : Toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        // Remove default title text
+        supportActionBar!!.setDisplayShowTitleEnabled(false);
+
+
         geocoder = Geocoder(applicationContext, Locale.getDefault())
         openHomeFragment()
 

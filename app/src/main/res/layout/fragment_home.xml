@@ -220,6 +220,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_30dp"
         android:text="@string/app_name"
+        android:visibility="gone"
         android:textSize="@dimen/xx_large_text"
         android:textStyle="bold" />
 
