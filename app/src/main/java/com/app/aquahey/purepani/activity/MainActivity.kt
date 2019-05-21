@@ -1,10 +1,8 @@
 package com.app.aquahey.purepani.activity
 
 import android.Manifest
-import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -12,15 +10,14 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
-import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.app.aquahey.purepani.R
 import com.app.aquahey.purepani.fragment.AboutFragment
 import com.app.aquahey.purepani.fragment.HelpNContactFragment
@@ -28,6 +25,7 @@ import com.app.aquahey.purepani.fragment.HomeFragment
 import com.app.aquahey.purepani.utils.ErrorUtils
 import com.app.aquahey.purepani.utils.LocalConfiq
 import com.app.aquahey.purepani.utils.PermissionUtils
+import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -37,39 +35,39 @@ import java.util.*
 
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener,
-        LocationListener {
+        GoogleApiClient.OnConnectionFailedListener,
+        LocationListener, GoogleApiClient.ConnectionCallbacks {
 
-    private val PERMISSION_REQUEST_CODE = 200
+    private val REQUEST_CHECK_SETTINGS_GPS = 0x1
 
     private var geocoder: Geocoder? = null
-
     private var addresses: List<Address>? = null
     private var mylocation: Location? = null
+    private var googleApiClient: GoogleApiClient? = null
     private val imageLoader = ImageLoader.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // setSupportActionBar(toolbar)
+        // setSupportActionBar(toolbar)
         geocoder = Geocoder(applicationContext, Locale.getDefault())
-        openHomeFragment()
+        //openDialog()
+
+        PermissionUtils.checkAndRequestPermissions(this, 1)
 
         //val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 
-       // drawer_layout.addDrawerListener(toggle)
-       // toggle.syncState()
-      //  nav_view.setNavigationItemSelectedListener(this)
+        // drawer_layout.addDrawerListener(toggle)
+        // toggle.syncState()
 
-        //setUpGClient()
+       // nav_view.setNavigationItemSelectedListener(this)
+        openHomeFragment()
+
+        setUpGClient()
     }
 
 
-    override fun onResume() {
-        PermissionUtils.checkAndRequestPermissions(this, PERMISSION_REQUEST_CODE)
-        getNetworkLocation()
-        super.onResume()
-    }
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -157,24 +155,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         transaction.commit()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
-            PERMISSION_REQUEST_CODE -> {
+            1 -> {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                   // getMyLocation()
-                    getNetworkLocation()
+                    getMyLocation()
                 } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
-                            showMessageOKCancel("You need to allow  access to location  permissions, so that we could provide you nearest service",
-                                    DialogInterface.OnClickListener { dialog, which ->
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                            requestPermissions(arrayOf(ACCESS_FINE_LOCATION), PERMISSION_REQUEST_CODE)
-                                        }
-                                    })
-                            return
-                        }
-                    }
+                    //finish()
                 }
 
                 return
@@ -185,44 +174,47 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
 
-
+    @Synchronized
+    private fun setUpGClient() {
+        googleApiClient = GoogleApiClient.Builder(applicationContext)
+                .enableAutoManage(this, 0, this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build()
+        googleApiClient!!.connect()
+    }
 
     override fun onLocationChanged(p0: Location?) {
         mylocation = p0
-        saveAddress(mylocation)
-
-    }
-
-    private fun saveAddress(location: Location?) {
-        if (location != null) {
-            val latitude = location!!.latitude
-            val longitude = location!!.longitude
+        if (mylocation != null) {
+            val latitude = mylocation!!.latitude
+            val longitude = mylocation!!.longitude
             addresses = geocoder!!.getFromLocation(latitude, longitude, 1)
             LocalConfiq.putString(applicationContext, LocalConfiq.PINCODE, addresses!![0].postalCode)
             LocalConfiq.putString(applicationContext, LocalConfiq.CITY, addresses!![0].locality)
             LocalConfiq.putString(applicationContext, LocalConfiq.STATE, addresses!![0].adminArea)
-          //  ErrorUtils.showErrorDialog(this@MainActivity,"Ok",addresses!![0].adminArea + " "+addresses!![0].locality+ " "+addresses!![0].postalCode)
         }
+    }
+
+    override fun onConnectionFailed(p0: ConnectionResult) {
+        ErrorUtils.showToast(applicationContext, p0.errorMessage)
 
     }
 
-
-    private fun getNetworkLocation() {
-        val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_FINE_LOCATION)
-        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-            val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val nWLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-                saveAddress(nWLocation)
-        }
-
+    override fun onConnected(p0: Bundle?) {
+       // hideDialog()
+        getMyLocation()
     }
 
+    override fun onConnectionSuspended(p0: Int) {
+        ErrorUtils.showToast(applicationContext, "Suspended")
+    }
 
-    /*private fun getMyLocation() {
+    private fun getMyLocation() {
         if (googleApiClient != null) {
             if (googleApiClient!!.isConnected) {
-                val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity,
-                        Manifest.permission.ACCESS_FINE_LOCATION)
+                val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_FINE_LOCATION)
 
                 if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
 
@@ -236,8 +228,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     builder.setAlwaysShow(true)
 
                     LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this)
-                    val result = LocationServices.SettingsApi
-                            .checkLocationSettings(googleApiClient, builder.build())
+                    val result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build())
 
                     result.setResultCallback { p0 ->
                         val status = p0.status
@@ -247,11 +238,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                                         .checkSelfPermission(applicationContext,
                                                 Manifest.permission.ACCESS_FINE_LOCATION)
                                 if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-                                    mylocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
+                                    mylocation = LocationServices.FusedLocationApi
+                                            .getLastLocation(googleApiClient)
                                 }
                             }
                             LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
-                                status.startResolutionForResult(this@MainActivity, REQUEST_CHECK_SETTINGS_GPS)
+                                status.startResolutionForResult(this@MainActivity,
+                                        REQUEST_CHECK_SETTINGS_GPS)
                             } catch (e: IntentSender.SendIntentException) {
                                 ErrorUtils.showToast(applicationContext, e.message)
                             }
@@ -262,15 +255,25 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 }
             }
         }
-    }*/
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CHECK_SETTINGS_GPS -> when (resultCode) {
+                Activity.RESULT_OK -> getMyLocation()
+                Activity.RESULT_CANCELED -> {
+                    //getNetworkLocation()
+                }
+            }
+        }
+    }
 
-    private fun showMessageOKCancel(message: String, okListener: DialogInterface.OnClickListener) {
-        AlertDialog.Builder(this@MainActivity)
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show()
+    private fun getNetworkLocation() {
+        val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+            val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val nWLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+           // saveAddress(nWLocation)
+        }
     }
 }
