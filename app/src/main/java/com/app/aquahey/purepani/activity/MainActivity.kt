@@ -2,19 +2,18 @@ package com.app.aquahey.purepani.activity
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -50,20 +49,23 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // setSupportActionBar(toolbar)
+        val toolbar : Toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        // Remove default title text
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+
         geocoder = Geocoder(applicationContext, Locale.getDefault())
-        //openDialog()
+        openHomeFragment()
+       // openDialog()
 
         PermissionUtils.checkAndRequestPermissions(this, 1)
 
-        //val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+       // val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 
         // drawer_layout.addDrawerListener(toggle)
         // toggle.syncState()
 
-       // nav_view.setNavigationItemSelectedListener(this)
-        openHomeFragment()
-
+        //nav_view.setNavigationItemSelectedListener(this)
         setUpGClient()
     }
 
@@ -155,7 +157,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         transaction.commit()
     }
 
-
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
@@ -163,7 +164,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getMyLocation()
                 } else {
-                    //finish()
+                   // finish()
                 }
 
                 return
@@ -214,7 +215,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private fun getMyLocation() {
         if (googleApiClient != null) {
             if (googleApiClient!!.isConnected) {
-                val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_FINE_LOCATION)
+                val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity,
+                        Manifest.permission.ACCESS_FINE_LOCATION)
 
                 if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
 
@@ -224,11 +226,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     locationRequest.fastestInterval = 3000
                     locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
-                    val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
+                    val builder = LocationSettingsRequest.Builder()
+                            .addLocationRequest(locationRequest)
                     builder.setAlwaysShow(true)
 
                     LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this)
-                    val result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build())
+                    val result = LocationServices.SettingsApi
+                            .checkLocationSettings(googleApiClient, builder.build())
 
                     result.setResultCallback { p0 ->
                         val status = p0.status
@@ -261,19 +265,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when (requestCode) {
             REQUEST_CHECK_SETTINGS_GPS -> when (resultCode) {
                 Activity.RESULT_OK -> getMyLocation()
-                Activity.RESULT_CANCELED -> {
-                    //getNetworkLocation()
-                }
+              //  Activity.RESULT_CANCELED -> finish()
             }
-        }
-    }
-
-    private fun getNetworkLocation() {
-        val permissionLocation = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_FINE_LOCATION)
-        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-            val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val nWLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-           // saveAddress(nWLocation)
         }
     }
 }
